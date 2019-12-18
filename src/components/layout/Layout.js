@@ -4,18 +4,17 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
 import styles from './style';
 
-import { Header, Footer, Subscription } from '../../components';
+import { Header, Footer } from '../../components';
 
 require('typeface-roboto');
 
-const Layout = ({ classes, children, hideSubscription }) => {
+const Layout = ({ classes, children, user }) => {
 
   return (
     <div className={classes.container}>
       <main className={classes.content}>
-        <Header />
+        <Header user={user} />
         {children}
-        {!hideSubscription && (<Subscription />)}
         <Footer />
       </main>
     </div>
@@ -25,12 +24,8 @@ const Layout = ({ classes, children, hideSubscription }) => {
 
 Layout.propTypes = {
   classes: PropTypes.object.isRequired,
-  children: PropTypes.element,
-  hideSubscription: PropTypes.bool
-};
-
-Layout.defaultProps = {
-  hideSubscription: false
+  children: PropTypes.element.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Layout);

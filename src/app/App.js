@@ -15,9 +15,9 @@ const App = () => {
   const user = getProfile();
 
   return (
-    <Layout>
+    <Layout user={user} >
       <Router>
-        <Dashboard path="/app" component={Dashboard} user={user} />
+        <Dashboard path="/app" user={user} />
       </Router>
     </Layout>
   )

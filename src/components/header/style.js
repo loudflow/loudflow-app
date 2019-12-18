@@ -1,4 +1,4 @@
-const styles = ({ app, palette }) => ({
+const styles = ({ app, palette, transitions }) => ({
   header: {
     width: '100%',
     maxWidth: app.maxWidth,
@@ -14,9 +14,14 @@ const styles = ({ app, palette }) => ({
   toolbar: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     padding: 0,
+  },
+  brand: {
+    display: 'block',
+    height: '40px',
+    marginRight: '40px',
   },
   navContainer: {
     flexGrow: 1,
@@ -41,12 +46,19 @@ const styles = ({ app, palette }) => ({
   navLinkActive: {
     borderBottom: `2px solid ${palette.primary.main}`,
   },
-  preview: {
+  userInfoContainer: {
+    marginBottom: '-5px',
     marginLeft: '20px',
+    background: 'transparent',
+    boxShadow: 'none',
   },
-  brand: {
-    display: 'block',
-    height: '120px',
+  userInfo: {
+    marginLeft: '5px',
+  },
+  userMenu: {
+    marginLeft: 'auto',
+  },
+  userMenuOpen: {
   },
   menuButton: {
   },
@@ -62,6 +74,13 @@ const styles = ({ app, palette }) => ({
     "& .listItem": {
       backgroundColor: palette.action.selected,
     }
+  },
+  help: {
+    border: 'none',
+    marginRight: '8px',
+    padding: `4px`,
+    textDecoration: 'none',
+    color: palette.text.primary,
   },
 });
 
