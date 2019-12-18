@@ -15,6 +15,10 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-react-helmet`,
     {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/app/*`] },
+    },
+    {
       resolve: `gatsby-plugin-material-ui`,
       options: {},
     },
@@ -23,6 +27,7 @@ module.exports = {
       options: {
         root: './src',
         aliases: {
+          'app': './app',
           'components': './components',
           'containers': './containers',
           'images': './images',
@@ -48,8 +53,8 @@ module.exports = {
       options: {
         name: `loudflow`,
         short_name: `loudflow`,
-        start_url: `/what/`,
-        icon: `src/images/logo/logo-orange.png`,
+        start_url: `/app/`,
+        icon: `src/images/logo/logo-white.png`,
       },
     },
   ]

@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { Layout, SEO } from '../components';
-import { What } from '../containers';
+import { NoHeaderLayout, SEO } from '../components';
+import { Welcome } from '../containers';
 
 const IndexPage = () => (
-  <Layout>
-    <SEO title='What' />
-    <What />
-  </Layout>
+  <NoHeaderLayout>
+    <SEO title='Welcome' />
+    <Welcome />
+  </NoHeaderLayout>
 );
 
 export default IndexPage;

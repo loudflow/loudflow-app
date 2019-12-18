@@ -16,10 +16,9 @@ const styles = ({ app, palette }) => ({
     }
   },
   copyright: {
-    flexGrow: 1,
+    display: 'flex',
   },
   privacy: {
-    display: 'flex',
     flexGrow: 1,
   },
   privacyLink: {
@@ -27,17 +26,6 @@ const styles = ({ app, palette }) => ({
     alignItems: 'center',
     color: palette.text.primary,
     textDecoration: 'none',
-  },
-  source: {
-    display: 'flex',
-  },
-  sourceLink: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  sourceIcon: {
-    width: '24px',
-    height: '24px',
   },
 });
 

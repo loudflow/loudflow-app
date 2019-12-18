@@ -1,3 +1,7 @@
 import Layout from './Layout';
+import NoHeaderLayout from './NoHeaderLayout';
 
-export default Layout;
+export {
+  Layout,
+  NoHeaderLayout,
+};

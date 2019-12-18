@@ -24,7 +24,7 @@ const Header = ({ classes }) => {
 
   const logoImage = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "images/logo/logo-black-name.png" }) {
+      file(relativePath: { eq: "images/logo/logo-black-name-col.png" }) {
         childImageSharp {
           fixed(height: 120, quality: 100) {
             ...GatsbyImageSharpFixed

@@ -13,7 +13,7 @@ const Privacy = ({ classes }) => {
         FarSimple Privacy Policy
       </Typography>
       <Typography variant='p' color='textPrimary' paragraph={true}>
-        This Privacy Policy describes how your personal information is collected, used, and shared when you use this website, www.loudflow.com (the "Site").
+        This Privacy Policy describes how your personal information is collected, used, and shared when you use this website, www.loudflow.app (the "Site").
       </Typography>
       <Typography variant='h6' color='textSecondary' paragraph={true}>
         PERSONAL INFORMATION WE COLLECT
