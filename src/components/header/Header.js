@@ -5,11 +5,11 @@ import Link from 'gatsby-link';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { AppBar, Avatar, Button, Card, CardContent, CardHeader, Collapse, Drawer, IconButton, List, ListItem, ListItemText, Toolbar, Typography, useMediaQuery } from '@material-ui/core';
+import { AppBar, Avatar, Button, Card, Divider, CardHeader, ClickAwayListener, Drawer, Grow, IconButton, List, ListItem, ListItemText, MenuItem, MenuList, Paper, Popper, Toolbar, useMediaQuery } from '@material-ui/core';
 import { Menu, ExpandMore } from '@material-ui/icons';
 import { withStyles } from '@material-ui/styles';
 import styles from './style';
-import clsx from 'clsx';
+import { logout } from "../../utils/auth"
 
 const options = [
   { to: '/systems/', text: 'Systems' },
@@ -38,10 +38,36 @@ const Header = ({ classes, user }) => {
     setMobileOpen(!mobileOpen);
   };
 
-  const [userMenuOpen, setUserMenuOpen] = React.useState(false);
-  const handleUserMenuOpenClick = () => {
-    setUserMenuOpen(!userMenuOpen);
+  const [openUserMenu, setOpenUserMenu] = React.useState(false);
+  const anchorRef = React.useRef(null);
+  const handleUserMenuToggle = () => {
+    setOpenUserMenu(prevOpenUserMenu => !prevOpenUserMenu);
   };
+  const handleUserMenuClose = event => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    setOpenUserMenu(false);
+  };
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setOpenUserMenu(false);
+    }
+  }
+  const prevOpenUserMenu = React.useRef(openUserMenu);
+  React.useEffect(() => {
+    if (prevOpenUserMenu.current === true && openUserMenu === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpenUserMenu.current = openUserMenu;
+  }, [openUserMenu]);
+
+  function signOut(event) {
+    event.preventDefault();
+    logout();
+  }
 
   return (
     <>
@@ -70,24 +96,36 @@ const Header = ({ classes, user }) => {
                   title={user.nickname ? user.nickname : "friend"}
                   action={
                     <IconButton
-                      className={clsx(classes.userMenu, {
-                        [classes.userMenuOpen]: userMenuOpen,
-                      })}
-                      onClick={handleUserMenuOpenClick}
+                      className={classes.userMenu}
+                      ref={anchorRef}
+                      onClick={handleUserMenuToggle}
                     >
                       <ExpandMore />
                     </IconButton>
                   }
                 />
-                <Collapse in={userMenuOpen} timeout="auto" unmountOnExit>
-                  <CardContent>
-                    <Typography paragraph>HELLO!</Typography>
-                  </CardContent>
-                </Collapse>
+                <Popper open={openUserMenu} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+                  {({ TransitionProps, placement }) => (
+                    <Grow
+                      {...TransitionProps}
+                      style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                    >
+                      <Paper>
+                        <ClickAwayListener onClickAway={handleUserMenuClose}>
+                          <MenuList autoFocusItem={openUserMenu} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                            <MenuItem onClick={handleUserMenuClose}>Profile</MenuItem>
+                            <MenuItem onClick={handleUserMenuClose}>Account</MenuItem>
+                            <Divider />
+                            <MenuItem onClick={handleUserMenuClose}>Help</MenuItem>
+                            <MenuItem onClick={handleUserMenuClose}>Feedback</MenuItem>
+                            <MenuItem onClick={signOut}>Sign Out</MenuItem>
+                          </MenuList>
+                        </ClickAwayListener>
+                      </Paper>
+                    </Grow>
+                  )}
+                </Popper>
               </Card>
-              <Link to='/' className={classes.help}>
-                Help
-              </Link>
             </Toolbar>
           </AppBar>
         </header>

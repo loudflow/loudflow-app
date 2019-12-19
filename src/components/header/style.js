@@ -75,13 +75,6 @@ const styles = ({ app, palette, transitions }) => ({
       backgroundColor: palette.action.selected,
     }
   },
-  help: {
-    border: 'none',
-    marginRight: '8px',
-    padding: `4px`,
-    textDecoration: 'none',
-    color: palette.text.primary,
-  },
 });
 
 export default styles;
