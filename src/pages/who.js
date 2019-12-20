@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { Layout, SEO } from '../components';
-import { Who } from '../containers';
+import { Agents } from '../containers';
 
 const WhoPage = () => (
   <Layout>
-    <SEO title='Who' />
-    <Who />
+    <SEO title='Agents' />
+    <Agents />
   </Layout>
 );
 

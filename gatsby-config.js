@@ -27,7 +27,6 @@ module.exports = {
       options: {
         root: './src',
         aliases: {
-          'app': './app',
           'components': './components',
           'containers': './containers',
           'images': './images',

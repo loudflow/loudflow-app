@@ -12,9 +12,9 @@ import styles from './style';
 import { logout } from "../../utils/auth"
 
 const options = [
-  { to: '/systems/', text: 'Systems' },
-  { to: '/worlds/', text: 'Worlds' },
-  { to: '/agents/', text: 'Agents' }
+  { to: '/app/systems/', text: 'Systems' },
+  { to: '/app/worlds/', text: 'Worlds' },
+  { to: '/app/agents/', text: 'Agents' }
 ];
 
 const Header = ({ classes, user }) => {

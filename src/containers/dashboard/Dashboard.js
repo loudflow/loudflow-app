@@ -5,7 +5,7 @@ function Dashboard({ user }) {
 
   return (
     <>
-      <h1>Welcome to the App</h1>
+      <h1>Dashboard</h1>
       <p>Hi, {user.nickname ? user.nickname : "friend"}!</p>
       <p>{user.name}</p>
       <p>{user.email}</p>
